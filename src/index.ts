@@ -1,11 +1,16 @@
 import { renderSearchFormBlock } from './search-form.js';
 import { renderSearchStubBlock } from './search-results.js';
 import { renderUserBlock } from './user.js';
-import { renderToast } from './lib.js';
+import { renderToast, getUserData, saveUserData } from './lib.js';
 
 window.addEventListener('DOMContentLoaded', () => {
-  renderUserBlock('l', 'r', 0);
-  renderSearchFormBlock();
+
+  saveUserData('Wanna Warn', 'src=/img/avatar.png')
+
+  const user = getUserData();
+  console.log(user);
+  renderUserBlock(user.userName, user.linkAvatar, 0);
+  renderSearchFormBlock(new Date);
   renderSearchStubBlock();
   renderToast(
     {
